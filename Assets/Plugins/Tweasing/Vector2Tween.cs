@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using gotanda;
 using System;
 using UniRx;
 

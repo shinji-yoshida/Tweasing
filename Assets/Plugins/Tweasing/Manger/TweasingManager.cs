@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
+﻿
 namespace Tweasing {
 	public abstract class TweasingManager : ITweasingManager {
 		static ITweasingManager soleInstance = new NullTweasingManager();

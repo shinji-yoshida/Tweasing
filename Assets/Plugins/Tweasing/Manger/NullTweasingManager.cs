@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
+﻿
 namespace Tweasing {
 	public class NullTweasingManager : TweasingManager {
 		public override TweenExecutor Executor {

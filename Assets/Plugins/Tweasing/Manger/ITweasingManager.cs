@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
+﻿
 namespace Tweasing {
 	public interface ITweasingManager {
 		TweenExecutor Executor {

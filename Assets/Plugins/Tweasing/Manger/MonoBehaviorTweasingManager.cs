@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace Tweasing {
 	public class MonoBehaviorTweasingManager : MonoBehaviour, ITweasingManager {

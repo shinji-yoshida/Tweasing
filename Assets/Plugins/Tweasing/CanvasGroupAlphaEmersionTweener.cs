@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UniPromise;
 using UniRx;
-using gotanda;
 
 namespace Tweasing {
 	public class CanvasGroupAlphaEmersionTweener : DurationScalableEmersionTweener {

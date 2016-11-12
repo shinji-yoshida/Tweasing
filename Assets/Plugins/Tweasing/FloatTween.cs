@@ -1,8 +1,4 @@
-﻿using UnityEngine;
-using System;
-using System.Collections.Generic;
-using gotanda;
-using UniPromise;
+﻿using System;
 using UniRx;
 
 namespace Tweasing {

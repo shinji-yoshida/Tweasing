@@ -29,20 +29,20 @@ namespace Tweasing {
 
 		protected abstract void DoForceShow ();
 
-		public virtual Promise<Unit> Show () {
+		public virtual Promise<CUnit> Show () {
 			var result = DoShow ();
 			Tweening.Disposable = result;
 			return result;
 		}
 
-		protected abstract Promise<Unit> DoShow ();
+		protected abstract Promise<CUnit> DoShow ();
 
-		public virtual Promise<Unit> Hide() {
+		public virtual Promise<CUnit> Hide() {
 			var result = DoHide ();
 			Tweening.Disposable = result;
 			return result;
 		}
 
-		protected abstract Promise<Unit> DoHide ();
+		protected abstract Promise<CUnit> DoHide ();
 	}
 }

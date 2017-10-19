@@ -18,7 +18,7 @@ namespace Tweasing {
 			canvasGroup.alpha = 1;
 		}
 
-		protected override Promise<Unit> DoShow (float duration, TweenExecutor executor) {
+		protected override Promise<CUnit> DoShow (float duration, TweenExecutor executor) {
 			return executor.Execute (
 				new FloatTween (
 					duration, canvasGroup.alpha, 1, showEasing,
@@ -27,7 +27,7 @@ namespace Tweasing {
 			);
 		}
 
-		protected override Promise<Unit> DoHide (float duration, TweenExecutor executor) {
+		protected override Promise<CUnit> DoHide (float duration, TweenExecutor executor) {
 			return executor.Execute (
 				new FloatTween (
 					duration, canvasGroup.alpha, 0, hideEasing,

@@ -28,16 +28,16 @@ namespace Tweasing {
 			animator.Play ("Shown");
 		}
 
-		protected override Promise<Unit> DoShow () {
+		protected override Promise<CUnit> DoShow () {
 			animator.ResetTrigger ("TriggerHide");
 			animator.ResetTrigger ("TriggerShow");
 			animatorEventSubject.OnNext ("Reset");
 
-			var result = new Deferred<Unit> ();
+			var result = new Deferred<CUnit> ();
 			animator.SetTrigger ("TriggerShow");
 			animatorEventSubject.Take (1).Subscribe (e => {
 				if(e == "Shown")
-					result.Resolve(Unit.Default);
+					result.Resolve(CUnit.Default);
 				else
 					result.Dispose();
 			}).AddTo (this);
@@ -45,16 +45,16 @@ namespace Tweasing {
 			return result;
 		}
 
-		protected override Promise<Unit> DoHide () {
+		protected override Promise<CUnit> DoHide () {
 			animator.ResetTrigger ("TriggerHide");
 			animator.ResetTrigger ("TriggerShow");
 			animatorEventSubject.OnNext ("Reset");
 
-			var result = new Deferred<Unit> ();
+			var result = new Deferred<CUnit> ();
 			animator.SetTrigger ("TriggerHide");
 			animatorEventSubject.Take (1).Subscribe (e => {
 				if(e == "Hidden")
-					result.Resolve(Unit.Default);
+					result.Resolve(CUnit.Default);
 				else
 					result.Dispose();
 			}).AddTo (this);

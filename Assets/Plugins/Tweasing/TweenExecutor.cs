@@ -25,7 +25,7 @@ namespace Tweasing {
 			tweenListCache.Push (tweenList);
 		}
 
-		public Promise<Unit> Execute(Tween tween) {
+		public Promise<CUnit> Execute(Tween tween) {
 			tweens.Add (tween);
 			return tween.PromiseExecution;
 		}

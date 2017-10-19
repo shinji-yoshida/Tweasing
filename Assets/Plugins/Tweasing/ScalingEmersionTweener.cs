@@ -15,14 +15,14 @@ namespace Tweasing {
 			transform.localScale = Vector3.one;
 		}
 
-		protected override Promise<Unit> DoShow(float duration, TweenExecutor executor) {
+		protected override Promise<CUnit> DoShow(float duration, TweenExecutor executor) {
 			transform.localScale = Vector3.zero;
 			return executor.Execute (
 				new FloatTween (duration, 0, 1, EasingEnum.BackEaseOut, s => transform.localScale = new Vector3 (1, s, 1))
 			).AddTo(this);
 		}
 
-		protected override Promise<Unit> DoHide(float duration, TweenExecutor executor) {
+		protected override Promise<CUnit> DoHide(float duration, TweenExecutor executor) {
 			transform.localScale = Vector3.one;
 			return executor.Execute (
 				new FloatTween (duration, 1, 0, EasingEnum.BackEaseInOut, s => transform.localScale = new Vector3 (1, s, 1))

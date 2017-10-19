@@ -10,7 +10,7 @@ namespace Tweasing {
 	}
 
 	public interface Tween {
-		Promise<Unit> PromiseExecution { get; }
+		Promise<CUnit> PromiseExecution { get; }
 		StatusEnum Status { get; }
 		void Update ();
 		void CallCompleted();
@@ -25,16 +25,16 @@ namespace Tweasing {
 		protected NormalizedEasing easing;
 		Action<T> onUpdated;
 		StatusEnum status;
-		Deferred<Unit> deferredCompleted;
+		Deferred<CUnit> deferredCompleted;
 
-		public Tween (float duration, T tweenFrom, T tweenDelta, EasingEnum easingType, Action<T> onUpdated, Action<Unit> onCompleted=null) {
+		public Tween (float duration, T tweenFrom, T tweenDelta, EasingEnum easingType, Action<T> onUpdated, Action<CUnit> onCompleted=null) {
 			this.duration = duration;
 			this.tweenFrom = tweenFrom;
 			this.tweenDelta = tweenDelta;
 			this.easing = easingType.NormalizedFunc();
 			this.onUpdated = onUpdated;
 
-			deferredCompleted = new Deferred<Unit> ();
+			deferredCompleted = new Deferred<CUnit> ();
 			if (onCompleted != null)
 				deferredCompleted.Done (onCompleted);
 			deferredCompleted.Disposed (() => this.Dispose ());
@@ -42,7 +42,7 @@ namespace Tweasing {
 			status = StatusEnum.Running;
 		}
 
-		public Promise<Unit> PromiseExecution {
+		public Promise<CUnit> PromiseExecution {
 			get {
 				return deferredCompleted;
 			}
@@ -64,7 +64,7 @@ namespace Tweasing {
 		}
 
 		public void CallCompleted() {
-			deferredCompleted.Resolve (Unit.Default);
+			deferredCompleted.Resolve (CUnit.Default);
 		}
 
 		public void Dispose () {

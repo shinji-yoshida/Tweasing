@@ -29,11 +29,11 @@ namespace Tweasing {
 			).AddTo(this);
 		}
 
-		protected override float GetDefaultShowEasiongDuration () {
+		protected override float GetDefaultShowEasingDuration () {
 			return duration;
 		}
 
-		protected override float GetDefaultHideEasiongDuration () {
+		protected override float GetDefaultHideEasingDuration () {
 			return duration;
 		}
 	}

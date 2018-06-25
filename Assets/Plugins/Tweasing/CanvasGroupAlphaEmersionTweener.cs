@@ -36,11 +36,11 @@ namespace Tweasing {
 			);
 		}
 
-		protected override float GetDefaultShowEasiongDuration () {
+		protected override float GetDefaultShowEasingDuration () {
 			return showEasingDuration;
 		}
 
-		protected override float GetDefaultHideEasiongDuration () {
+		protected override float GetDefaultHideEasingDuration () {
 			return hideEasingDuration;
 		}
 	}

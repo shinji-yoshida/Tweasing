@@ -6,7 +6,7 @@ using UniRx;
 namespace Tweasing {
 	public abstract class DurationScalableEmersionTweener : EmersionTweener {
 		public override Promise<CUnit> Show () {
-			return Show (GetDefaultShowEasiongDuration (), GetExecutor ());
+			return Show (GetDefaultShowEasingDuration (), GetExecutor ());
 		}
 
 		public Promise<CUnit> Show (float duration) {
@@ -14,7 +14,7 @@ namespace Tweasing {
 		}
 
 		public Promise<CUnit> Show (TweenExecutor executor) {
-			return Show (GetDefaultShowEasiongDuration(), executor);
+			return Show (GetDefaultShowEasingDuration(), executor);
 		}
 
 		public Promise<CUnit> Show (float duration, TweenExecutor executor) {
@@ -26,7 +26,7 @@ namespace Tweasing {
 		protected abstract Promise<CUnit> DoShow (float duration, TweenExecutor executor);
 
 		public override Promise<CUnit> Hide () {
-			return Hide (GetDefaultHideEasiongDuration (), GetExecutor ());
+			return Hide (GetDefaultHideEasingDuration (), GetExecutor ());
 		}
 
 		public Promise<CUnit> Hide (float duration) {
@@ -34,7 +34,7 @@ namespace Tweasing {
 		}
 
 		public Promise<CUnit> Hide (TweenExecutor executor) {
-			return Hide (GetDefaultHideEasiongDuration(), executor);
+			return Hide (GetDefaultHideEasingDuration(), executor);
 		}
 
 		public Promise<CUnit> Hide(float duration, TweenExecutor executor) {
@@ -49,11 +49,11 @@ namespace Tweasing {
 			return TweasingManager.Instance.Executor;
 		}
 
-		protected virtual float GetDefaultShowEasiongDuration() {
+		protected virtual float GetDefaultShowEasingDuration() {
 			throw new System.NotImplementedException ();
 		}
 
-		protected virtual float GetDefaultHideEasiongDuration () {
+		protected virtual float GetDefaultHideEasingDuration () {
 			throw new System.NotImplementedException ();
 		}
 

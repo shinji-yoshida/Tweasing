@@ -5,7 +5,12 @@ using UniRx;
 
 namespace Tweasing {
 	public abstract class EmersionTweener : MonoBehaviour {
+		public enum EmersionState {
+			Shown, Hidden, Showing, Hiding
+		}
+
 		SerialDisposable _tweening;
+		EmersionState state;
 
 		protected SerialDisposable Tweening {
 			get {
@@ -15,9 +20,16 @@ namespace Tweasing {
 			}
 		}
 
+		public EmersionState State {
+			get {
+				return state;
+			}
+		}
+
 		public void ForceHide() {
 			Tweening.Disposable = Disposable.Empty;
 			DoForceHide ();
+			state = EmersionState.Hidden;
 		}
 
 		protected abstract void DoForceHide ();
@@ -25,12 +37,14 @@ namespace Tweasing {
 		public void ForceShow () {
 			Tweening.Disposable = Disposable.Empty;
 			DoForceShow ();
+			state = EmersionState.Shown;
 		}
 
 		protected abstract void DoForceShow ();
 
 		public virtual Promise<CUnit> Show () {
-			var result = DoShow ();
+			state = EmersionState.Showing;
+			var result = DoShow ().Done(_ => state = EmersionState.Shown);
 			Tweening.Disposable = result;
 			return result;
 		}
@@ -38,7 +52,8 @@ namespace Tweasing {
 		protected abstract Promise<CUnit> DoShow ();
 
 		public virtual Promise<CUnit> Hide() {
-			var result = DoHide ();
+			state = EmersionState.Hiding;
+			var result = DoHide ().Done(_ => state = EmersionState.Hidden);
 			Tweening.Disposable = result;
 			return result;
 		}

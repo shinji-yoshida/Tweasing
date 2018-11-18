@@ -3,8 +3,17 @@ using UniRx;
 using UniPromise;
 
 namespace Tweasing {
-	public class FloatTween : Tween<float> {
+	[Serializable]
+	public class FloatTweenProvider {
+		public float duration = 1;
+		public EasingEnum easingType;
 
+		public FloatTween Generate(float tweenFrom, float tweenTo, Action<float> onUpdated, Action<CUnit> onCompleted=null) {
+			return new FloatTween (duration, tweenFrom, tweenTo, easingType, onUpdated, onCompleted);
+		}
+	}
+
+	public class FloatTween : Tween<float> {
 		public FloatTween (float duration, float tweenFrom, float tweenTo, EasingEnum easingType, Action<float> onUpdated, Action<CUnit> onCompleted=null)
 			: base(duration, tweenFrom, tweenTo - tweenFrom, easingType, onUpdated, onCompleted)
 		{
